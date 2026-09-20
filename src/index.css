@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Bharat Design System ────────────────────────────────────── */
+:root {
+  --saffron: #E8610A;
+  --teal:    #006E6D;
+  --ivory:   #FFF8EF;
+  --crimson: #B5281C;
+  --forest:  #2D6A2F;
+  --slate:   #1C1C1C;
+  --sand:    #E8D5A8;
+  --mist:    #D9CFC3;
+}
+
+@layer base {
+  html { font-family: "Poppins", system-ui, sans-serif; }
+  body {
+    background-color: var(--ivory);
+    color: var(--slate);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: "Yatra One", Georgia, serif; }
+
+  :focus-visible {
+    outline: 2px solid var(--saffron);
+    outline-offset: 3px;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.4;
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Mandala divider — decorative section break */
+  .mandala-divider {
+    @apply relative flex items-center gap-4 my-8;
+  }
+  .mandala-divider::before,
+  .mandala-divider::after {
+    content: "";
+    @apply flex-1 border-t border-sand;
+  }
+  .mandala-divider span {
+    @apply text-sand text-xl leading-none select-none;
+  }
+
+  /* Geometric border pattern (top accent on hero sections) */
+  .geo-border-top {
+    position: relative;
+  }
+  .geo-border-top::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--saffron) 0px, var(--saffron) 20px,
+      var(--teal) 20px, var(--teal) 40px,
+      var(--sand) 40px, var(--sand) 60px
+    );
+  }
+
+  /* Transport mode pill */
+  .transport-pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 font-mono text-xs font-medium;
+  }
+
+  /* Entrance animation */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-enter { animation: enter 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+    .animate-fadeIn { animation: fadeIn 0.4s ease both; }
+  }
+
+  /* Star rating badge */
+  .star-badge {
+    @apply inline-flex items-center gap-0.5 font-mono text-xs px-2 py-0.5 bg-sand text-slate;
+  }
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--mist); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--saffron); }
+
+/* Leaflet map override — match our ivory/teal theme */
+.leaflet-container {
+  font-family: "Poppins", sans-serif;
+  border-radius: 0;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.08) !important;
+  font-family: "Poppins", sans-serif;
+}
+.leaflet-popup-tip { display: none; }
+
+.print-only { display: none; }
+
+@media print {
+  @page { margin: 14mm; }
+
+  body { background: #fff; color: #1C1C1C; }
+  .screen-only { display: none !important; }
+  .print-only { display: block !important; }
+  .trip-print-document { font-family: Arial, sans-serif; font-size: 10pt; line-height: 1.45; }
+  .trip-print-header { border-bottom: 3px solid #006E6D; padding-bottom: 14px; margin-bottom: 20px; }
+  .trip-print-header h1 { color: #006E6D; font-family: Georgia, serif; font-size: 30pt; margin: 4px 0; }
+  .trip-print-header p { margin: 2px 0; }
+  .trip-print-kicker { color: #E8610A; font-size: 8pt; font-weight: bold; letter-spacing: 0.16em; }
+  .trip-print-document section { border-bottom: 1px solid #D9CFC3; padding: 0 0 12px; margin: 0 0 16px; break-inside: avoid; }
+  .trip-print-document h2 { color: #006E6D; font-family: Georgia, serif; font-size: 16pt; margin: 0 0 8px; }
+  .trip-print-document h3 { color: #1C1C1C; font-size: 11pt; margin: 0 0 4px; }
+  .trip-print-document p { margin: 3px 0; }
+  .trip-print-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
+  .trip-print-day, .trip-print-hotel { border-left: 3px solid #E8D5A8; padding: 5px 0 5px 10px; margin: 7px 0; break-inside: avoid; }
+  .trip-print-document table { width: 100%; border-collapse: collapse; }
+  .trip-print-document td { border-bottom: 1px solid #D9CFC3; padding: 5px; }
+  .trip-print-document td:last-child { text-align: right; }
+  .trip-print-document footer { color: #666; border-top: 1px solid #D9CFC3; padding-top: 10px; margin-top: 20px; font-size: 8pt; }
+}
