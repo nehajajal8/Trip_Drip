@@ -1,4 +1,5 @@
 # 🧳 Trip Drip (India Edition) — AI Travel Operating System & Smart Wardrobe Companion by Neha Jajal & Ujjwal Savla
+https://drive.google.com/drive/folders/1uCYd_VxioWj-oS8PC3zKKYyla28udyBB?usp=sharing link to the project video
 
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
